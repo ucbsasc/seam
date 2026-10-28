@@ -453,8 +453,8 @@ p {
     align-items: start;
   }
 
-  .families {
-    grid-template-columns: 7fr 5fr;
+  .families-top > .photo {
+    order: -1;
   }
 
   .history {
@@ -468,14 +468,14 @@ p {
 }
 
 .about,
+.speakers,
 .families,
 .parents,
-.mentor,
-.history {
+.history-section {
   padding-bottom: clamp(64px, 9vw, 112px);
 }
 
-.families,
+.about,
 .history {
   align-items: start;
 }
@@ -488,6 +488,55 @@ p {
 
 .basics h3 {
   margin-bottom: 8px;
+}
+
+/* Speakers */
+
+.speaker-grid {
+  display: grid;
+  gap: 24px;
+}
+
+@media (min-width: 860px) {
+  .speaker-grid {
+    grid-template-columns: 7fr 5fr;
+    align-items: start;
+  }
+}
+
+.speaker {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--mint-soft);
+}
+
+.speaker-main {
+  background: var(--lotus-soft);
+}
+
+.speaker img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.speaker-text {
+  padding: 24px 28px 28px;
+}
+
+.speaker-text h3 {
+  font-size: 1.5rem;
+  margin-bottom: 4px;
+}
+
+.speaker-role {
+  font-weight: 600;
+  color: var(--lotus-deep);
+}
+
+.speaker-text p:last-child {
+  margin-bottom: 0;
 }
 
 /* Quick facts */
@@ -678,14 +727,29 @@ p {
 
 /* Family groups */
 
+.families-top {
+  align-items: center;
+  margin-bottom: 48px;
+}
+
 .agreements {
+  display: grid;
+  gap: 8px 48px;
   background: var(--mint-soft);
   border-radius: var(--radius);
   padding: 28px 28px 20px;
 }
 
-.agreements > p {
+@media (min-width: 860px) {
+  .agreements {
+    grid-template-columns: 4fr 8fr;
+    padding: 36px 40px 28px;
+  }
+}
+
+.agreements p {
   font-size: 0.95rem;
+  color: var(--muted);
 }
 
 .agreements ul {
@@ -693,8 +757,16 @@ p {
   padding-left: 1.2em;
 }
 
+@media (min-width: 600px) {
+  .agreements ul {
+    columns: 2;
+    column-gap: 40px;
+  }
+}
+
 .agreements li {
   margin-bottom: 8px;
+  break-inside: avoid;
 }
 
 .agreements li::marker {
@@ -721,6 +793,21 @@ p {
 }
 
 /* Parents */
+
+.parents-top {
+  align-items: start;
+  margin-bottom: 40px;
+}
+
+.parent-cost {
+  background: var(--lotus-soft);
+  border-radius: var(--radius);
+  padding: 24px 28px 8px;
+}
+
+.parent-cost h3 {
+  font-size: 1.2rem;
+}
 
 .parent-grid {
   display: grid;
@@ -792,17 +879,31 @@ p {
 
 /* Mission */
 
-.history h3 {
-  margin-top: 28px;
+.mission-quote {
+  max-width: 52rem;
+  margin-top: clamp(48px, 7vw, 72px);
 }
 
-blockquote {
+.mission-quote blockquote {
   margin: 0;
-  padding-left: 18px;
+  padding-left: 20px;
   border-left: 3px solid var(--lotus);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* Mentors */
+
+.mentor {
+  align-items: start;
+}
+
+.mentor-lede {
   font-family: var(--serif);
-  font-size: 1.05rem;
-  line-height: 1.55;
+  font-size: clamp(1.3rem, 2.6vw, 1.6rem);
+  line-height: 1.3;
+  color: var(--jade-deep);
 }
 
 /* Sign up */

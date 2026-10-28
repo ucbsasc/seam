@@ -7,7 +7,7 @@ const base = import.meta.env.BASE_URL;
 // Every "Sign up" button on the page points at these. While a link is empty,
 // buttons scroll to the sign-up section, which offers an email reminder instead.
 const menteeForm = '';
-const mentorForm = '';
+const mentorForm = 'https://docs.google.com/forms/d/e/1FAIpQLSfN6obe4wYn4DyU6QQiNAaFyJz5cepl6K3cpANG9GpQ2TAydg/viewform';
 
 const menteeHref = menteeForm || '#sign-up';
 const mentorHref = mentorForm || '#sign-up';
@@ -272,6 +272,44 @@ const App = () => {
           </div>
         </section>
 
+        <section className="wrap speakers" id="speakers">
+          <h2>Who you&apos;ll hear from</h2>
+          <div className="speaker-grid">
+            <article className="speaker speaker-main">
+              <img
+                src={`${base}speaker.webp`}
+                alt="Dr. Harvey Dong standing with three SEAM students in front of a hand-lettered Southeast Asian Mentorship banner"
+                width={1200}
+                height={900}
+                loading="lazy"
+              />
+              <div className="speaker-text">
+                <h3>Dr. Harvey Dong</h3>
+                <p className="speaker-role">Teaches Asian American Studies at UC Berkeley</p>
+                <p>
+                  As a Cal student in 1969, Dr. Dong was part of the Third World Liberation Front strike, the student
+                  movement that led to Berkeley&apos;s Ethnic Studies department. He went on to run Eastwind Books of
+                  Berkeley, an Asian American bookstore, for more than 25 years. He came out to speak with our students
+                  and stayed for photos.
+                </p>
+              </div>
+            </article>
+            <article className="speaker">
+              <img
+                src={`${base}workshop.webp`}
+                alt="Irene Phuong Van presenting a workshop titled Reclaiming our Mental Health as Southeast Asians to students seated in a classroom"
+                width={1440}
+                height={1085}
+                loading="lazy"
+              />
+              <div className="speaker-text">
+                <h3>Irene Phuong Van</h3>
+                <p>Led a workshop for our students called &quot;Reclaiming our Mental Health as Southeast Asians.&quot;</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
         <section className="band band-mint" id="how-it-works">
           <div className="wrap">
             <h2>How it works</h2>
@@ -315,29 +353,40 @@ const App = () => {
           </div>
         </section>
 
-        <section className="wrap split families" id="families">
-          <div>
-            <h2>Family groups</h2>
-            <p>
-              Every mentee joins a small family group with a few other high schoolers and a couple of mentors. Families
-              are named after flowers, like Hibiscus and Orchid.
-            </p>
-            <p>
-              Your family decides how often to meet and how, whether that&apos;s a Zoom call or a group chat. At your
-              first meeting you fill out an agreement together about expectations and meeting times.
-            </p>
-            <p>
-              For safety, mentors don&apos;t meet one-on-one with a mentee. Texting is fine as long as it&apos;s about
-              mentorship.
-            </p>
-            <p>
-              Mentors aren&apos;t trained counselors. For things like mental health or a medical issue, please reach out
-              to a professional or your school counselor.
-            </p>
+        <section className="wrap families" id="families">
+          <div className="split families-top">
+            <div>
+              <h2>Family groups</h2>
+              <p>
+                Every mentee joins a small family group with a few other high schoolers and a couple of mentors.
+                Families are named after flowers, like Hibiscus and Orchid.
+              </p>
+              <p>
+                Your family decides how often to meet and how, whether that&apos;s a Zoom call or a group chat. At your
+                first meeting you fill out an agreement together about expectations and meeting times.
+              </p>
+              <p>
+                For safety, mentors don&apos;t meet one-on-one with a mentee. Texting is fine as long as it&apos;s about
+                mentorship.
+              </p>
+              <p>
+                Mentors aren&apos;t trained counselors. For things like mental health or a medical issue, please reach
+                out to a professional or your school counselor.
+              </p>
+            </div>
+            <Photo
+              src={`${base}orchid.webp`}
+              alt="A family group in matching SEAM shirts holding up a hand-drawn poster that says Orchids"
+              caption="The Orchid family and their poster"
+              width={1200}
+              height={900}
+            />
           </div>
           <div className="agreements">
-            <h3>Community agreements</h3>
-            <p>We go over these at the start of meetings.</p>
+            <div>
+              <h3>Community agreements</h3>
+              <p>We go over these at the start of meetings.</p>
+            </div>
             <ul>
               {agreements.map((a) => (
                 <li key={a}>{a}</li>
@@ -363,8 +412,8 @@ const App = () => {
                 <h2>The weekend at Berkeley</h2>
                 <p>
                   For most people this is the best part, since it&apos;s the first time your family meets in person. We
-                  stay in the campus dorms and eat at the dining hall. There are campus tours, workshops led by
-                  Southeast Asian guest speakers, time with your family, and a cultural banquet at the end.
+                  stay in the campus dorms and eat at the dining hall. There are campus tours, workshops with guest
+                  speakers, time with your family, and a cultural banquet at the end.
                 </p>
                 <p>
                   The dorms and meals are covered. If you need a ride, we organize BART groups and carpools, each with
@@ -392,12 +441,20 @@ const App = () => {
         </section>
 
         <section className="wrap parents" id="parents">
-          <h2>For parents and guardians</h2>
-          <p className="intro">
-            Questions can go to <a href={`mailto:${email}`}>{email}</a>. We try to answer within a business day.
-          </p>
+          <div className="split parents-top">
+            <div>
+              <h2>For parents and guardians</h2>
+              <p>
+                Questions can go to <a href={`mailto:${email}`}>{email}</a>. We try to answer within a business day.
+              </p>
+            </div>
+            <div className="parent-cost">
+              <h3>{parentInfo[0].title}</h3>
+              <p>{parentInfo[0].body}</p>
+            </div>
+          </div>
           <div className="parent-grid">
-            {parentInfo.map((item) => (
+            {parentInfo.slice(1).map((item) => (
               <div key={item.title}>
                 <h3>{item.title}</h3>
                 <p>{item.body}</p>
@@ -406,65 +463,67 @@ const App = () => {
           </div>
         </section>
 
-        <section className="wrap split mentor" id="mentors">
-          <div>
-            <h2>For college students</h2>
-            <p>
-              You don&apos;t have to go to Berkeley to be a mentor.
-            </p>
-            <p>
-              Mentors keep in touch with their family group, come to the Zoom meetings in May, and come to the
-              conference in June. A few also speak on the career panel. Your conference costs are covered too.
-            </p>
-            <p>
-              Before the program starts you do mentor training and California&apos;s mandated reporter (CANRA)
-              training, since you&apos;ll be working with minors.
-            </p>
-            <div className="buttons">
-              <a className="button" href={mentorHref}>
-                Become a mentor
-              </a>
+        <section className="band band-mint" id="mentors">
+          <div className="wrap split mentor">
+            <div>
+              <h2>For college students</h2>
+              <p className="mentor-lede">You don&apos;t have to go to Berkeley to be a mentor.</p>
+            </div>
+            <div>
+              <p>
+                Mentors keep in touch with their family group, come to the Zoom meetings in May, and come to the
+                conference in June. A few also speak on the career panel. Your conference costs are covered too.
+              </p>
+              <p>
+                Before the program starts you do mentor training and California&apos;s mandated reporter (CANRA)
+                training, since you&apos;ll be working with minors.
+              </p>
+              <div className="buttons">
+                <a className="button" href={mentorHref}>
+                  Become a mentor
+                </a>
+              </div>
             </div>
           </div>
-          <Photo
-            src={`${base}workshop.webp`}
-            alt="A speaker presenting a workshop titled Reclaiming our Mental Health as Southeast Asians to students seated in a classroom"
-            caption='Irene Phuong Van presenting "Reclaiming our Mental Health as Southeast Asians"'
-            width={1440}
-            height={1085}
-          />
         </section>
 
-        <section className="wrap split history" id="history">
-          <div>
-            <h2>History</h2>
-            <p>SEAM grew out of SASC, which has run programs for Southeast Asian high school students since it started in 2000.</p>
+        <section className="wrap history-section" id="history">
+          <div className="split history">
+            <div>
+              <h2>History</h2>
+              <p>
+                SEAM grew out of SASC, which has run programs for Southeast Asian high school students since it started
+                in 2000.
+              </p>
+              <Photo
+                src={`${base}fundraiser.webp`}
+                alt="SEAM officers smiling at a fundraising table selling strawberry sago under the SASC banner"
+                caption="Officers selling strawberry sago to raise money for SEAM"
+                width={1440}
+                height={1440}
+              />
+            </div>
+            <ol className="timeline">
+              {history.map((item) => (
+                <li key={item.year}>
+                  <span className="year">{item.year}</span>
+                  <p>{item.body}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+          <div className="mission-quote">
             <h3>Our mission</h3>
             <blockquote>&quot;{mission}&quot;</blockquote>
-            <Photo
-              src={`${base}fundraiser.webp`}
-              alt="SEAM officers smiling at a fundraising table selling strawberry sago under the SASC banner"
-              caption="Officers selling strawberry sago to raise money for SEAM"
-              width={1440}
-              height={1440}
-            />
           </div>
-          <ol className="timeline">
-            {history.map((item) => (
-              <li key={item.year}>
-                <span className="year">{item.year}</span>
-                <p>{item.body}</p>
-              </li>
-            ))}
-          </ol>
         </section>
 
         <section className="band band-ink" id="sign-up">
           <div className="wrap">
             <h2>Sign up</h2>
             <p className="signup-intro">
-              Sign-ups for the next cycle aren&apos;t open yet. Send us an email and we&apos;ll let you know when they
-              open, or keep an eye on <a href={instagram}>@ucbseam</a>. Questions go to{' '}
+              Mentor applications are open now. Mentee sign-ups open later, so send us an email and we&apos;ll let you
+              know, or keep an eye on <a href={instagram}>@ucbseam</a>. Questions go to{' '}
               <a href={`mailto:${email}?subject=SEAM`}>{email}</a>.
             </p>
             <div className="signups">
@@ -482,7 +541,7 @@ const App = () => {
                 who="For college students who can make the May meetings and the June conference."
                 when="Mentor sign-ups usually open in the fall."
                 form={mentorForm}
-                label="Sign up as a mentor"
+                label="Apply to be a mentor"
                 role="mentor"
                 tone="lotus"
               />
