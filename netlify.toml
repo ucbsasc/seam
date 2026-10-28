@@ -5,7 +5,13 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# The public URL is ucbsasc.org/seam/, proxied here by the main site.
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/"
+  to = "/seam/"
+  status = 302
+
+[[redirects]]
+  from = "/seam/*"
+  to = "/seam/index.html"
   status = 200

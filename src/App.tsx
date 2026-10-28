@@ -1,6 +1,7 @@
 const email = 'ucb.seam@gmail.com';
 const instagram = 'https://www.instagram.com/ucbseam';
 const sascSite = 'https://ucbsasc.org';
+const base = import.meta.env.BASE_URL;
 
 const mission =
   'To empower high school youth and mentors by utilizing academic advising and mentorship as a way of addressing political and socio-economic issues facing the Southeast Asian community; to build a two-way exchange of knowledge and resources, instilling within both mentees and mentors the power to create social change.';
@@ -70,8 +71,8 @@ const App = () => (
   <>
     <header className="topbar">
       <div className="wrap topbar-inner">
-        <a className="brand" href="/">
-          <img src="/favicon.png" alt="" width={36} height={36} />
+        <a className="brand" href={base}>
+          <img src={`${base}favicon.png`} alt="" width={36} height={36} />
           <span>SEAM</span>
         </a>
         <a className="topbar-link" href={sascSite}>
@@ -94,7 +95,7 @@ const App = () => (
         </div>
         <img
           className="hero-photo"
-          src="/group.webp"
+          src={`${base}group.webp`}
           alt="SEAM mentors and mentees posing together in a classroom in front of a hand-lettered Southeast Asian Mentorship sign"
           width={1440}
           height={1080}
@@ -104,7 +105,7 @@ const App = () => (
       <section className="wrap split about">
         <img
           className="logo"
-          src="/logo.png"
+          src={`${base}logo.png`}
           alt="SEAM logo: the word Seam in green script above two hands holding a pink lotus"
           width={800}
           height={800}
@@ -143,7 +144,7 @@ const App = () => (
               ))}
             </ol>
             <Photo
-              src="/traditional.webp"
+              src={`${base}traditional.webp`}
               alt="SEAM mentees posing in traditional clothes, making heart shapes with their arms"
               caption="Mentees in traditional clothes"
               width={1440}
@@ -163,7 +164,7 @@ const App = () => (
           <p>We expect mentors to come to the summer conference too. Food, housing, and other costs are covered.</p>
         </div>
         <Photo
-          src="/workshop.webp"
+          src={`${base}workshop.webp`}
           alt="A speaker presenting a workshop titled Reclaiming our Mental Health as Southeast Asians to students seated in a classroom"
           caption="Irene Phuong Van presenting “Reclaiming our Mental Health as Southeast Asians”"
           width={1440}
@@ -176,7 +177,7 @@ const App = () => (
           <h2>History</h2>
           <p>SASC has run programs for Southeast Asian high school students since it started in 2000.</p>
           <Photo
-            src="/fundraiser.webp"
+            src={`${base}fundraiser.webp`}
             alt="SEAM officers smiling at a fundraising table selling strawberry sago under the SASC banner"
             caption="Officers selling strawberry sago to raise money for SEAM"
             width={1440}
