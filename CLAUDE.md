@@ -1,6 +1,6 @@
 # SEAM site
 
-Site for SEAM (Southeast Asian Mentorship), a program of SASC at UC Berkeley. Public URL: **https://ucbsasc.org/seam/**.
+Site for SEAM (Southeast Asian Mentorship), a registered student organization (RSO) at UC Berkeley. It runs separately from SASC but sits under SASC's umbrella; say that, not "a program of SASC" or "a group of students". Public URL: **https://ucbsasc.org/seam/**.
 
 ## How it's served (don't break this)
 

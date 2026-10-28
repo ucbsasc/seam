@@ -1,6 +1,6 @@
 # ucbsasc.org/seam
 
-Site for SEAM (Southeast Asian Mentorship), a program of [SASC](https://ucbsasc.org) at UC Berkeley.
+Site for SEAM (Southeast Asian Mentorship), a registered student organization at UC Berkeley under [SASC](https://ucbsasc.org).
 
 Vite + React + TypeScript, plain CSS. Deployed on Netlify from `main`. The main site ([ucbsasc/website](https://github.com/ucbsasc/website)) proxies `/seam/*` to this Netlify site, so everything here builds under `/seam/` (see `vite.config.ts`).
 

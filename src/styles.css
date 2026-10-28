@@ -61,12 +61,12 @@ a {
 }
 
 section[id] {
-  scroll-margin-top: 16px;
+  scroll-margin-top: 80px;
 }
 
-@media (min-width: 721px) {
+@media (max-width: 720px) {
   section[id] {
-    scroll-margin-top: 80px;
+    scroll-margin-top: 110px;
   }
 }
 
@@ -131,13 +131,11 @@ p {
   background: var(--paper);
 }
 
-/* Sticky on desktop so Sign up is always one click away. Phones get the bottom bar instead. */
-@media (min-width: 721px) {
-  .topbar {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-  }
+/* Sticky so Sign up is always one tap away. */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
 }
 
 .topbar-inner {
@@ -283,38 +281,56 @@ p {
   max-width: 14ch;
 }
 
-/* Brush-stroke underline, a nod to the lettering in the logo */
+/* Brush stroke that runs under "Mentorship" and curves up into the lotus, like the "m" in the logo.
+   Everything is positioned in em from the lotus wrapper, whose bottom sits on the text baseline,
+   so the stroke meets the flower at any font size. */
 .brush {
+  position: relative;
+  isolation: isolate;
   color: var(--jade);
   white-space: nowrap;
-  padding-bottom: 0.06em;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 24' preserveAspectRatio='none'%3E%3Cpath d='M5 17 C 80 7, 180 4, 295 11' fill='none' stroke='%237bd1b0' stroke-width='10' stroke-linecap='round'/%3E%3C/svg%3E")
-    bottom / 100% 0.3em no-repeat;
+}
+
+.lotus-wrap {
+  position: relative;
+  display: inline-block;
+  width: 0.86em;
+  height: 0.8em;
+}
+
+/* 1 viewBox unit = 0.01em; the wrapper's bottom-left (baseline, end of the word) is (570, 50) */
+.brush-stroke {
+  position: absolute;
+  left: -5.7em;
+  bottom: -0.3em;
+  width: 6.4em;
+  height: 0.8em;
+  overflow: visible;
+  z-index: -1;
+}
+
+.brush-stroke path {
+  fill: none;
+  stroke: var(--mint);
+  stroke-width: 10;
+  stroke-linecap: round;
+}
+
+.hero-lotus {
+  position: absolute;
+  left: 0.064em;
+  bottom: 0;
+  width: 0.78em;
+  height: auto;
+  transform: translate(-0.02em, -0.006em) rotate(-10deg);
+  transform-origin: bottom left;
 }
 
 .lede {
   font-size: clamp(1.15rem, 2.2vw, 1.35rem);
   color: var(--muted);
   max-width: 36rem;
-  margin: 0 auto 14px;
-}
-
-.free-note {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--jade-deep);
-  margin: 0 0 28px;
-}
-
-.free-note::before {
-  content: '';
-  display: inline-block;
-  width: 11px;
-  height: 11px;
-  margin-right: 10px;
-  border-radius: 50%;
-  background: var(--lotus);
-  box-shadow: 0 0 0 2px var(--lotus-deep);
+  margin: 0 auto 28px;
 }
 
 .hero .buttons {
@@ -324,10 +340,6 @@ p {
 .button-big {
   padding: 15px 30px;
   font-size: 1.05rem;
-}
-
-.hero .button:not(.button-ghost) {
-  box-shadow: 0 8px 20px rgba(31, 122, 92, 0.28);
 }
 
 @media (max-width: 480px) {
@@ -468,43 +480,20 @@ p {
   align-items: start;
 }
 
-/* What you get */
+/* About */
 
-.perks {
-  list-style: none;
-  margin: 0 0 28px;
-  padding: 0;
+.about p a {
+  font-weight: 600;
 }
 
-.perks li {
-  position: relative;
-  padding: 0 0 14px 30px;
-  font-size: 1.1rem;
-}
-
-.perks li::before {
-  content: '';
-  position: absolute;
-  left: 4px;
-  top: 0.55em;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--lotus);
-  box-shadow: 0 0 0 2px var(--lotus-deep);
-}
-
-.about-note {
-  font-size: 0.95rem;
+.basics h3 {
+  margin-bottom: 8px;
 }
 
 /* Quick facts */
 
 .facts {
   margin: 0;
-  padding: 8px 24px;
-  background: var(--mint-soft);
-  border-radius: var(--radius);
 }
 
 .facts div {
@@ -514,8 +503,8 @@ p {
   border-top: 1px solid var(--line);
 }
 
-.facts div:first-child {
-  border-top: 0;
+.facts div:last-child {
+  border-bottom: 1px solid var(--line);
 }
 
 @media (min-width: 400px) {
@@ -645,8 +634,7 @@ p {
 }
 
 @media (min-width: 560px) {
-  .schedule li,
-  .sessions li {
+  .schedule li {
     grid-template-columns: 8rem 1fr;
   }
 
@@ -897,60 +885,4 @@ blockquote {
 
 .footer-inner p {
   margin: 0;
-}
-
-/* Phone-only sign-up bar, shown by useSignupBar in App.tsx */
-
-.signup-bar {
-  display: none;
-}
-
-@media (max-width: 720px) {
-  .signup-bar {
-    position: fixed;
-    left: 12px;
-    right: 12px;
-    bottom: 12px;
-    z-index: 30;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 10px 10px 10px 18px;
-    border-radius: 999px;
-    background: var(--ink);
-    color: #fff;
-    font-size: 0.92rem;
-    font-weight: 600;
-    box-shadow: 0 8px 24px rgba(22, 48, 42, 0.25);
-    transform: translateY(150%);
-    visibility: hidden;
-    transition: transform 0.2s, visibility 0.2s;
-  }
-
-  .signup-bar.is-visible {
-    transform: none;
-    visibility: visible;
-  }
-
-  .signup-bar .button {
-    padding: 8px 18px;
-    background: var(--lotus);
-    border-color: var(--lotus);
-    color: var(--ink);
-  }
-
-  .footer {
-    padding-bottom: 96px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .signup-bar {
-    transition: none;
-  }
-}
-
-.footer a {
-  color: #fff;
 }
